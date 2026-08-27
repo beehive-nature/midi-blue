@@ -1402,5 +1402,26 @@ readPitch();
   $('price-line').innerHTML='<b>'+(twap?fmt(twap):'…')+'</b> (10-minute average from observe())'+(spot?' · spot: '+fmt(spot):'');
 })();
 </script>
+
+<!-- ── THE COMMUNITY ROOM — added by lane/midiroom2 (2026-08-26) ────────────
+     midi.blue is the front door; the ROOM is where the hive plays together.
+     realtime once the buzz relay is up on the Oracle VPS: the deploy recipe
+     is staged at ~/buzz-relay-deploy.sh (Caddy TLS, Postgres+Redis compose).
+     run: wsl -e sh /mnt/c/Users/travi/buzz-relay-deploy.sh <relay-host> <your-npub>
+     then open the room with ?relay=wss://<relay-host> — this door links it. -->
+<section class="panel" id="room-door" style="margin-top:14px">
+  <h3 style="font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:var(--ink-dim)">the community room — where the hive plays together</h3>
+  <p style="font-size:13px;color:var(--ink-mut);line-height:1.6">the <b style="color:var(--you)">bMiDi room</b> is the front door's live floor: one organism in three densities —
+  beginner, DJ, producer — toggled in realtime. ask bMiDi in plain words, it searches seed space, you queue what sings.
+  the room log goes <b>realtime</b> the moment our buzz relay is live: performances arrive as signed Nostr events and the
+  setlist becomes the channel's history.</p>
+  <p style="margin-top:8px">
+    <a href="https://skaists.dev/surfaces/blight/midiroom.html" style="color:var(--you);font-weight:650">▶ enter the room (local mode)</a>
+    &nbsp;·&nbsp; <a href="https://skaists.dev/surfaces/blight/midi.html" style="color:var(--you)">the solo performance</a>
+    &nbsp;·&nbsp; <a href="https://skaists.dev/surfaces/blight/profile.html" style="color:var(--you)">the holder profile</a>
+  </p>
+  <p style="font-size:10.5px;color:var(--ink-dim);margin-top:6px">relay status: <b>staged</b> — the Oracle VPS deploy is one command away; the room already speaks its protocol.</p>
+</section>
+
 </body>
 </html>
