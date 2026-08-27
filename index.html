@@ -743,10 +743,9 @@ setSeed(7,extraOfSeed(7),'opening face — level zero, the static');
     var c=CONTRACTS[i];
     var res=await rpc([{to:c.addr,data:SEL_BAL+'0'.repeat(24)+dead}]);
     var bal=res&&res[0]?Number(BigInt(res[0])/1000000000n):0;
-    lines.push('MiDi '+c.k+': '+(bal?bal.toLocaleString(undefined,{maximumFractionDigits:0})+' whole tokens behind a door that never opens':'nothing'));
+    lines.push(bal?bal.toLocaleString(undefined,{maximumFractionDigits:0}):'nothing');
   }
-  $('closet-line').innerHTML='<b>the one-way address holds '+lines[2]+' of MiDi(B)</b> — burned out of reach; nothing on A or C ('+lines[0].indexOf('nothing')===0?'zero':'—'+'). the address was read before this page was built; this line re-reads it live.';
-  $('closet-line').textContent='on MiDi(B) the one-way 0x…dEaD address holds '+lines[2]+' whole tokens — sent somewhere no key can reach. on A and C: '+lines[0]+' · '+lines[1]+'. read live, this moment, from the chain.';
+  $('closet-line').innerHTML='on MiDi(B) the one-way 0x…dEaD address holds <b>'+lines[2]+' whole tokens</b> — sent somewhere no key can reach, out of every supply that will ever count. on A and C: '+lines[0]+' · '+lines[1]+'. read live, this moment, from the chain.';
 })();
 /* the market: the pool as a holder — its seed is its balance, its art repaints on every swap */
 (async function(){
@@ -780,7 +779,7 @@ setSeed(7,extraOfSeed(7),'opening face — level zero, the static');
     if(!overflow){spot=(sq/Math.pow(2,96));spot=spot*spot;}
     else{var hi=Number(sqrt>>96n),lo=Number(sqrt&((1n<<96n)-1n));spot=(hi+lo/Math.pow(2,96));spot=spot*spot;}
   }
-  function fmt(p){return p?(1/p).toPrecision(4)+' WETH per MIDI — '+(p*1e6).toLocaleString(undefined,{maximumFractionDigits:1})+' MIDI per WETH':'';}
+  function fmt(p){var human=p*1e9;return human?human.toLocaleString(undefined,{maximumFractionDigits:0})+' MIDI per WETH — one MIDI ≈ '+(1/human).toExponential(2)+' WETH':'';}
   $('price-line').innerHTML='<b>'+(twap?fmt(twap):'…')+'</b> (10-minute average from observe())'+(spot?' · spot: '+fmt(spot):'');
 })();
 </script>
