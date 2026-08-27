@@ -776,9 +776,7 @@ $('voice').addEventListener('click',function(){
   if(!sounding){sounding=true;this.classList.remove('off');this.textContent='silence — let the score rest';startSound();}
   else{stopSound();this.classList.add('off');this.textContent='click here to listen to what bMiDi paints';}
 });
-$('fleetnav').innerHTML=(window.FLEET_NAV||[
- '<a href="./index.html">◈ fLeeT</a>','<a href="./museum.html">◈ museum</a>','<a href="./compare.html">◈ catalog</a>',
- '<a href="./gallery.html">◈ gallery</a>','<a href="./inscription-explorer.html">◈ explorer</a>','<a href="./bnri-gallery.html">◈ bNRi</a>']).join(' · ');
+
 /* the opening face: level 0 by law — the static IS the piece's first state */
 setSeed(7,extraOfSeed(7),'opening face — level zero, the static');
 </script>
