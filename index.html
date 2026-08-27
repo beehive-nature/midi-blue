@@ -715,6 +715,26 @@ function renderContracts(){
       if(MIDI_C===c.addr)return;
       MIDI_C=c.addr;
       renderContracts();
+
+      $('msg').textContent='now reading MiDi '+c.k+' ('+c.addr.slice(0,10)+'…'+c.addr.slice(-6)+') — '+c.state+'. same name, same symbol, NOT the same contract: balances, owners and pools differ.';
+      visit($('in').value||'1500000');
+    });
+    box.appendChild(d);
+  });
+}
+renderContracts();
+$('voice').addEventListener('click',function(){
+  if(!S.melody||REDUCED)return;
+  if(S.tier===0){$('msg').textContent='level zero paints silence — the same piece, still unresolved. sound begins at 1,000.';return;}
+  if(!sounding){sounding=true;this.classList.remove('off');this.textContent='silence — let the score rest';startSound();}
+  else{stopSound();this.classList.add('off');this.textContent='click here to listen to what bMiDi paints';}
+});
+
+/* the opening face: level 0 by law — the static IS the piece's first state */
+setSeed(7,extraOfSeed(7),'opening face — level zero, the static');
+</script>
+
+<script>
 /* the closet: the one-way address, read live on every contract */
 (async function(){
   var dead='000000000000000000000000000000000000dEaD'.toLowerCase();
@@ -763,23 +783,6 @@ function renderContracts(){
   function fmt(p){return p?(1/p).toPrecision(4)+' WETH per MIDI — '+(p*1e6).toLocaleString(undefined,{maximumFractionDigits:1})+' MIDI per WETH':'';}
   $('price-line').innerHTML='<b>'+(twap?fmt(twap):'…')+'</b> (10-minute average from observe())'+(spot?' · spot: '+fmt(spot):'');
 })();
-      $('msg').textContent='now reading MiDi '+c.k+' ('+c.addr.slice(0,10)+'…'+c.addr.slice(-6)+') — '+c.state+'. same name, same symbol, NOT the same contract: balances, owners and pools differ.';
-      visit($('in').value||'1500000');
-    });
-    box.appendChild(d);
-  });
-}
-renderContracts();
-$('voice').addEventListener('click',function(){
-  if(!S.melody||REDUCED)return;
-  if(S.tier===0){$('msg').textContent='level zero paints silence — the same piece, still unresolved. sound begins at 1,000.';return;}
-  if(!sounding){sounding=true;this.classList.remove('off');this.textContent='silence — let the score rest';startSound();}
-  else{stopSound();this.classList.add('off');this.textContent='click here to listen to what bMiDi paints';}
-});
-
-/* the opening face: level 0 by law — the static IS the piece's first state */
-setSeed(7,extraOfSeed(7),'opening face — level zero, the static');
 </script>
-
 </body>
 </html>
